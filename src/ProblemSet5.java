@@ -88,6 +88,12 @@ public class ProblemSet5 {
         System.out.println(ps.triplets(null));                              //→ -1
         System.out.println(ps.triplets("tttxg\n\n\n\n"));                   //→ 3
         System.out.println();
+
+        System.out.println("\033[1mEXERCISE 7:\033[0m");
+        System.out.println(ps.addMe("123 abc 123"));                        //→ 12
+        System.out.println(ps.addMe("abcdefghijk"));                        //→ 0
+        System.out.println(ps.addMe(null));                                 //→ -1
+        System.out.println(ps.addMe("\n\n\t9"));                            //→ 9
     }
     
     /*
@@ -204,20 +210,17 @@ public class ProblemSet5 {
             int sequence = 0;
             int count = 0;
             for (int i = 0; i < text.length(); i++) {
-                //System.out.printf("Iteration: %d\n", i);
                 if (i == 0) {
                     previousChar = text.charAt(i);
                 } else {
                     if (text.charAt(i) == previousChar) {
                         sequence++;
-                        //System.out.println("seq: " + String.valueOf(sequence));
                     }
                     if (text.charAt(i) != previousChar) {
                         sequence = 0;
                         previousChar = text.charAt(i);
                     } else if (sequence >= 2) {
                         count++;
-                        //System.out.println("cnt: " + String.valueOf(count));
                     }
                     
                 }
@@ -226,15 +229,29 @@ public class ProblemSet5 {
         }
     }
     
-//     /*
-//      * Exercise 7.
-//      * 
-//      * Given a string, compute the sum of the digits in text.
-//      */
+    /*
+     * Exercise 7.
+     * 
+     * Given a string, compute the sum of the digits in text.
+     */
     
-//     public long addMe(String text) {
+    public long addMe(String text) {
+        if (text == null) {
+            return -1;
+        } else {
+            long sum = 0;
+            for (int i = 0; i < text.length(); i++) {
+                int charInt = 0;
+                try {
+                    charInt = Integer.parseInt(String.valueOf(text.charAt(i)));
+                    sum += charInt;
+                } catch (Exception e) {
 
-//     }
+                }
+            }
+            return sum;
+        }
+    }
     
 //     /*
 //      * Exercise 8.
