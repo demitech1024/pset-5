@@ -50,19 +50,29 @@ public class ProblemSet5 {
         System.out.println();
 
         System.out.println("\033[1mEXERCISE 2:\n\033[0m");
-        System.out.println(ps.endsMeet("abcdefg", 2));  //→ "abfg"
-        System.out.println(ps.endsMeet(null, 2));       //→ null
-        System.out.println(ps.endsMeet("", 2));         //→ ""
-        System.out.println(ps.endsMeet("abc", -1));     //→ "abc"
-        System.out.println(ps.endsMeet("ab\nc", 2));    //→ "ab\nc"
+        System.out.println(ps.endsMeet("abcdefg", 2));          //→ "abfg"
+        System.out.println(ps.endsMeet(null, 2));               //→ null
+        System.out.println(ps.endsMeet("", 2));                 //→ ""
+        System.out.println(ps.endsMeet("abc", -1));             //→ "abc"
+        System.out.println(ps.endsMeet("ab\nc", 2));            //→ "ab\nc"
         System.out.println();
 
         System.out.println("\033[1mEXERCISE 3:\n\033[0m");
-        System.out.println(ps.middleMan("abcdefg"));    //→ "cde"
-        System.out.println(ps.middleMan(null));         //→ null
-        System.out.println(ps.middleMan("12"));         //→ "12"
-        System.out.println(ps.middleMan("a"));          //→ "a"
-        System.out.println(ps.middleMan("ibi\ngdo"));   //→ "i\ng"
+        System.out.println(ps.middleMan("abcdefg"));            //→ "cde"
+        System.out.println(ps.middleMan(null));                 //→ null
+        System.out.println(ps.middleMan("12"));                 //→ "12"
+        System.out.println(ps.middleMan("a"));                  //→ "a"
+        System.out.println(ps.middleMan("ibi\ngdo"));           //→ "i\ng"
+        System.out.println();
+
+        System.out.println("\033[1mEXERCISE 4:\n\033[0m");
+        System.out.println(ps.isCentered("abcdefg", "cde"));    //→ true
+        System.out.println(ps.isCentered("abcdefg", "abc"));    //→ false
+        System.out.println(ps.isCentered(null, "abc"));         //→ false
+        System.out.println(ps.isCentered("abcd", "abc"));       //→ false
+        System.out.println(ps.isCentered("abc", "null"));       //→ false
+        System.out.println(ps.isCentered("abcdefg", "cd"));     //→ false
+        System.out.println();
 
     }
     
@@ -116,21 +126,32 @@ public class ProblemSet5 {
         if (text == null || text.length() < 3 || text.length() % 2 == 0) {
             return text;
         } else {
-            int centerIndex = Math.floorDiv(text.length(), 2);String output = text.substring(centerIndex - 1, centerIndex + 2);
+            int centerIndex = Math.floorDiv(text.length(), 2);
+            String output = text.substring(centerIndex - 1, centerIndex + 2);
             return output;
         }
     }
     
-//     /*
-//      * Exercise 4.
-//      * 
-//      * Given two strings, determine whether or not target is equivalent to the middle
-//      * three characters of text.
-//      */
+    /*
+     * Exercise 4.
+     * 
+     * Given two strings, determine whether or not target is equivalent to the middle
+     * three characters of text.
+     */
     
-//     public boolean isCentered(String text, String target) {
-
-//     }
+    public boolean isCentered(String text, String target) {
+        if (text == null || text.length() < 3 || text.length() % 2 == 0 || target == null || target.length() != 3) {
+            return false;
+        } else {
+            int centerIndex = Math.floorDiv(text.length(), 2);
+            String center = text.substring(centerIndex - 1, centerIndex + 2);
+            if (center.equals(target)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
     
 //     /*
 //      * Exercise 5.
