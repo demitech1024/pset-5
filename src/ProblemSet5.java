@@ -48,8 +48,12 @@ public class ProblemSet5 {
         System.out.println(ps.surroundMe("abc", "123"));
         System.out.println(ps.surroundMe("abc", "123"));
         System.out.println();
-
-        //System.out.println(ps.endsMeet());
+        System.out.println("\033[1mEXERCISE 2:\n\033[0m");
+        System.out.println(ps.endsMeet("abcdefg", 2));
+        System.out.println(ps.endsMeet(null, 2));
+        System.out.println(ps.endsMeet("", 2));
+        System.out.println(ps.endsMeet("abc", -1));
+        System.out.println(ps.endsMeet("ab\nc", 2));
         
         
 
@@ -78,16 +82,22 @@ public class ProblemSet5 {
         
     }
     
-//     /*
-//      * Exercise 2.
-//      * 
-//      * Given a string and an integer, return a new string that represents the first
-//      * and last n characters of text.
-//      */
+    /*
+     * Exercise 2.
+     * 
+     * Given a string and an integer, return a new string that represents the first
+     * and last n characters of text.
+     */
     
-//     public String endsMeet(String text, int n) {
-
-//     }
+    public String endsMeet(String text, int n) {
+        if (text == null || text.length() > 10 || text.length() < 1 || n > 10 || n < 1) {
+            return text;
+        } else {
+            String output = text.substring(0, n) + text.substring(text.length() - n);
+            return output;  
+        }
+        
+    }
     
 //     /*
 //      * Exercise 3.
