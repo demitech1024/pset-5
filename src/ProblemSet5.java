@@ -41,7 +41,7 @@ public class ProblemSet5 {
         //     System.out.println(ps.surroundMe(args[1], args[2]));
         // }
         System.out.println();
-        System.out.println("\033[1mEXERCISE 1:\n\033[0m");
+        System.out.println("\033[1mEXERCISE 1:\033[0m");
         System.out.println(ps.surroundMe("cde", "abfg"));
         System.out.println(ps.surroundMe(null, "####"));
         System.out.println(ps.surroundMe("abc", null));
@@ -49,29 +49,36 @@ public class ProblemSet5 {
         System.out.println(ps.surroundMe("abc", "123"));
         System.out.println();
 
-        System.out.println("\033[1mEXERCISE 2:\n\033[0m");
-        System.out.println(ps.endsMeet("abcdefg", 2));          //→ "abfg"
-        System.out.println(ps.endsMeet(null, 2));               //→ null
-        System.out.println(ps.endsMeet("", 2));                 //→ ""
-        System.out.println(ps.endsMeet("abc", -1));             //→ "abc"
-        System.out.println(ps.endsMeet("ab\nc", 2));            //→ "ab\nc"
+        System.out.println("\033[1mEXERCISE 2:\033[0m");
+        System.out.println(ps.endsMeet("abcdefg", 2));                      //→ "abfg"
+        System.out.println(ps.endsMeet(null, 2));                           //→ null
+        System.out.println(ps.endsMeet("", 2));                             //→ ""
+        System.out.println(ps.endsMeet("abc", -1));                         //→ "abc"
+        System.out.println(ps.endsMeet("ab\nc", 2));                        //→ "ab\nc"
         System.out.println();
 
-        System.out.println("\033[1mEXERCISE 3:\n\033[0m");
-        System.out.println(ps.middleMan("abcdefg"));            //→ "cde"
-        System.out.println(ps.middleMan(null));                 //→ null
-        System.out.println(ps.middleMan("12"));                 //→ "12"
-        System.out.println(ps.middleMan("a"));                  //→ "a"
-        System.out.println(ps.middleMan("ibi\ngdo"));           //→ "i\ng"
+        System.out.println("\033[1mEXERCISE 3:\033[0m");
+        System.out.println(ps.middleMan("abcdefg"));                        //→ "cde"
+        System.out.println(ps.middleMan(null));                             //→ null
+        System.out.println(ps.middleMan("12"));                             //→ "12"
+        System.out.println(ps.middleMan("a"));                              //→ "a"
+        System.out.println(ps.middleMan("ibi\ngdo"));                       //→ "i\ng"
         System.out.println();
 
-        System.out.println("\033[1mEXERCISE 4:\n\033[0m");
-        System.out.println(ps.isCentered("abcdefg", "cde"));    //→ true
-        System.out.println(ps.isCentered("abcdefg", "abc"));    //→ false
-        System.out.println(ps.isCentered(null, "abc"));         //→ false
-        System.out.println(ps.isCentered("abcd", "abc"));       //→ false
-        System.out.println(ps.isCentered("abc", "null"));       //→ false
-        System.out.println(ps.isCentered("abcdefg", "cd"));     //→ false
+        System.out.println("\033[1mEXERCISE 4:\033[0m");
+        System.out.println(ps.isCentered("abcdefg", "cde"));                //→ true
+        System.out.println(ps.isCentered("abcdefg", "abc"));                //→ false
+        System.out.println(ps.isCentered(null, "abc"));                     //→ false
+        System.out.println(ps.isCentered("abcd", "abc"));                   //→ false
+        System.out.println(ps.isCentered("abc", "null"));                   //→ false
+        System.out.println(ps.isCentered("abcdefg", "cd"));                 //→ false
+        System.out.println();
+
+        System.out.println("\033[1mEXERCISE 5:\033[0m");
+        System.out.println(ps.countMe("I am an example sentence", 'e'));    //→ 2
+        System.out.println(ps.countMe(null, 'a'));                          //→ -1
+        System.out.println(ps.countMe("abc$ def$", '$'));                   //→ -1
+        System.out.println(ps.countMe("obama barack", '\u0398'));           //→ -1
         System.out.println();
 
     }
@@ -153,15 +160,28 @@ public class ProblemSet5 {
         }
     }
     
-//     /*
-//      * Exercise 5.
-//      * 
-//      * Given a string and a character, compute the number of words that end in suffix.
-//      */
+    /*
+     * Exercise 5.
+     * 
+     * Given a string and a character, compute the number of words that end in suffix.
+     */
     
-//     public int countMe(String text, char suffix) {
+    public int countMe(String text, char suffix) {
+        //if (text == null || !(Character.isLetter(suffix)) || !((suffix >= 'a' && suffix <= 'z') || (suffix >= 'A' && suffix <= 'Z'))) {
+        if (text == null || !(Character.isLetter(suffix)) || ((suffix < 'a' || suffix > 'z') && (suffix < 'A' || suffix > 'Z'))) {
+            return -1;
+        }
+        String[] words = text.split(" ");
+        int count = 0;
+        for (int i = 0; i < words.length; i++) {
+            if (words[i].charAt(words[i].length() - 1) == suffix) {
+                count++;
+            }
+        }
+        return count;
+        
 
-//     }
+    }
     
 //     /*
 //      * Exercise 6.
