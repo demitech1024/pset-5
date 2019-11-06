@@ -21,7 +21,7 @@
 public class ProblemSet5 {
     
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        //Scanner sc = new Scanner(System.in);
         ProblemSet5 ps = new ProblemSet5();
         // switch (args[0]) {
         //     case "surroundMe":
