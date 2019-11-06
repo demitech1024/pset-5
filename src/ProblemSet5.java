@@ -48,14 +48,21 @@ public class ProblemSet5 {
         System.out.println(ps.surroundMe("abc", "123"));
         System.out.println(ps.surroundMe("abc", "123"));
         System.out.println();
+
         System.out.println("\033[1mEXERCISE 2:\n\033[0m");
-        System.out.println(ps.endsMeet("abcdefg", 2));
-        System.out.println(ps.endsMeet(null, 2));
-        System.out.println(ps.endsMeet("", 2));
-        System.out.println(ps.endsMeet("abc", -1));
-        System.out.println(ps.endsMeet("ab\nc", 2));
-        
-        
+        System.out.println(ps.endsMeet("abcdefg", 2));  //→ "abfg"
+        System.out.println(ps.endsMeet(null, 2));       //→ null
+        System.out.println(ps.endsMeet("", 2));         //→ ""
+        System.out.println(ps.endsMeet("abc", -1));     //→ "abc"
+        System.out.println(ps.endsMeet("ab\nc", 2));    //→ "ab\nc"
+        System.out.println();
+
+        System.out.println("\033[1mEXERCISE 3:\n\033[0m");
+        System.out.println(ps.middleMan("abcdefg"));    //→ "cde"
+        System.out.println(ps.middleMan(null));         //→ null
+        System.out.println(ps.middleMan("12"));         //→ "12"
+        System.out.println(ps.middleMan("a"));          //→ "a"
+        System.out.println(ps.middleMan("ibi\ngdo"));   //→ "i\ng"
 
     }
     
@@ -99,15 +106,20 @@ public class ProblemSet5 {
         
     }
     
-//     /*
-//      * Exercise 3.
-//      * 
-//      * Given a string, return a new string using the middle three characters of text.
-//      */
+    /*
+     * Exercise 3.
+     * 
+     * Given a string, return a new string using the middle three characters of text.
+     */
     
-//     public String middleMan(String text) {
-
-//     }
+    public String middleMan(String text) {
+        if (text == null || text.length() < 3 || text.length() % 2 == 0) {
+            return text;
+        } else {
+            int centerIndex = Math.floorDiv(text.length(), 2);String output = text.substring(centerIndex - 1, centerIndex + 2);
+            return output;
+        }
+    }
     
 //     /*
 //      * Exercise 4.
