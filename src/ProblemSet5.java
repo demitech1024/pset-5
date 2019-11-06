@@ -81,6 +81,13 @@ public class ProblemSet5 {
         System.out.println(ps.countMe("obama barack", '\u0398'));           //→ -1
         System.out.println();
 
+        System.out.println("\033[1mEXERCISE 6:\033[0m");
+        System.out.println(ps.triplets("aaabbbccc"));                       //→ 3
+        System.out.println(ps.triplets("aaaa"));                            //→ 2
+        System.out.println(ps.triplets("abc"));                             //→ 0
+        System.out.println(ps.triplets(null));                              //→ -1
+        System.out.println(ps.triplets("tttxg\n\n\n\n"));                   //→ 3
+        System.out.println();
     }
     
     /*
@@ -183,15 +190,41 @@ public class ProblemSet5 {
 
     }
     
-//     /*
-//      * Exercise 6.
-//      * 
-//      * Given a string, compute the number of triplets in text.
-//      */
+    /*
+     * Exercise 6.
+     * 
+     * Given a string, compute the number of triplets in text.
+     */
     
-//     public int triplets(String text) {
-
-//     }
+    public int triplets(String text) {
+        if (text == null) {
+            return -1;
+        } else {
+            char previousChar = '\0';
+            int sequence = 0;
+            int count = 0;
+            for (int i = 0; i < text.length(); i++) {
+                //System.out.printf("Iteration: %d\n", i);
+                if (i == 0) {
+                    previousChar = text.charAt(i);
+                } else {
+                    if (text.charAt(i) == previousChar) {
+                        sequence++;
+                        //System.out.println("seq: " + String.valueOf(sequence));
+                    }
+                    if (text.charAt(i) != previousChar) {
+                        sequence = 0;
+                        previousChar = text.charAt(i);
+                    } else if (sequence >= 2) {
+                        count++;
+                        //System.out.println("cnt: " + String.valueOf(count));
+                    }
+                    
+                }
+            }
+            return count;
+        }
+    }
     
 //     /*
 //      * Exercise 7.
