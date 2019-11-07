@@ -42,11 +42,11 @@ public class ProblemSet5 {
         // }
         System.out.println();
         System.out.println("\033[1mEXERCISE 1:\033[0m");
-        System.out.println(ps.surroundMe("cde", "abfg"));
-        System.out.println(ps.surroundMe(null, "####"));
-        System.out.println(ps.surroundMe("abc", null));
-        System.out.println(ps.surroundMe("abc", "123"));
-        System.out.println(ps.surroundMe("abc", "123"));
+        System.out.println(ps.surroundMe("cde", "abfg"));                   //→ "abcdefg"
+        System.out.println(ps.surroundMe(null, "####"));                    //→ null
+        System.out.println(ps.surroundMe("abc", null));                     //→ "abc"
+        System.out.println(ps.surroundMe("abc", "123"));                    //→ "abc"
+        System.out.println(ps.surroundMe("abc", "12\n3"));                  //→ "12abc\n3"
         System.out.println();
 
         System.out.println("\033[1mEXERCISE 2:\033[0m");
@@ -116,6 +116,11 @@ public class ProblemSet5 {
         System.out.println(ps.isPalindrome("racecar"));                     //→ true
         System.out.println(ps.isPalindrome("Madam"));                       //→ false
         System.out.println(ps.isPalindrome(null));                          //→ false
+        System.out.println(ps.isPalindrome(""));                            //→ true
+        System.out.println(ps.isPalindrome("a"));                           //→ true
+        System.out.println(ps.isPalindrome("madam"));                       //→ true
+        System.out.println(ps.isPalindrome("12321"));                       //→ true
+        System.out.println(ps.isPalindrome("\n8\n"));                       //→ true
         System.out.println();
     }
     
@@ -268,9 +273,7 @@ public class ProblemSet5 {
                 try {
                     charInt = Integer.parseInt(String.valueOf(text.charAt(i)));
                     sum += charInt;
-                } catch (Exception e) {
-
-                }
+                } catch (Exception e) {}
             }
             return sum;
         }
@@ -335,13 +338,21 @@ public class ProblemSet5 {
         }
     }
     
-//     /*
-//      * Exercise 10.
-//      * 
-//      * Given a string, determine whether or not it is a palindrome.
-//      */
+    /*
+     * Exercise 10.
+     * 
+     * Given a string, determine whether or not it is a palindrome.
+     */
     
-//     public boolean isPalindrome(String text) {
-
-//     }
+    public boolean isPalindrome(String text) {
+        if (text == null) {
+            return false;
+        } else {
+            String reversed = "";
+            for (int i = text.length() - 1; i >= 0; i--) {
+                reversed += String.valueOf(text.charAt(i));
+            }
+            return (reversed.equals(text));
+        }
+    }
 }
