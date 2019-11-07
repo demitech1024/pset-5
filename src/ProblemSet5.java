@@ -94,6 +94,14 @@ public class ProblemSet5 {
         System.out.println(ps.addMe("abcdefghijk"));                        //→ 0
         System.out.println(ps.addMe(null));                                 //→ -1
         System.out.println(ps.addMe("\n\n\t9"));                            //→ 9
+        System.out.println();
+
+        System.out.println("\033[1mEXERCISE 8:\033[0m");
+        System.out.println(ps.sequence("abbcccdddd"));                      //→ 4
+        System.out.println(ps.sequence("aAabBbBb"));                        //→ 1
+        System.out.println(ps.sequence(""));                                //→ 0
+        System.out.println(ps.sequence(null));                              //→ -1
+        System.out.println();
     }
     
     /*
@@ -239,7 +247,7 @@ public class ProblemSet5 {
         if (text == null) {
             return -1;
         } else {
-            long sum = 0;
+            long sum = 0L;
             for (int i = 0; i < text.length(); i++) {
                 int charInt = 0;
                 try {
@@ -253,15 +261,39 @@ public class ProblemSet5 {
         }
     }
     
-//     /*
-//      * Exercise 8.
-//      * 
-//      * Given a string, compute the length of the longest sequence.
-//      */
+    /*
+     * Exercise 8.
+     * 
+     * Given a string, compute the length of the longest sequence.
+     */
     
-//     public long sequence(String text) {
-
-//     }
+    public long sequence(String text) {
+        if (text == null) {
+            return -1;
+        } else {
+            char previousChar = '\0';
+            long consecutive = 1L;
+            long largestConsecutive = 0L;
+            for (int i = 0; i < text.length(); i++) {
+                if (i == 0) {
+                    previousChar = text.charAt(i);
+                } else {
+                    if (text.charAt(i) == previousChar) {
+                        consecutive++;
+                    }
+                    if (text.charAt(i) != previousChar) {
+                        consecutive = 1L;
+                        largestConsecutive = (consecutive > largestConsecutive) ? consecutive : largestConsecutive;
+                        previousChar = text.charAt(i);
+                    } else if (consecutive > largestConsecutive) {
+                        largestConsecutive = (long) consecutive;
+                    }
+                    
+                }
+            }
+            return largestConsecutive;
+        }
+    }
     
 //     /*
 //      * Exercise 9.
