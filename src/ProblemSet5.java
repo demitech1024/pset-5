@@ -102,6 +102,21 @@ public class ProblemSet5 {
         System.out.println(ps.sequence(""));                                //→ 0
         System.out.println(ps.sequence(null));                              //→ -1
         System.out.println();
+
+        System.out.println("\033[1mEXERCISE 9:\033[0m");
+        System.out.println(ps.intertwine("aceg", "bdfh"));                  //→ "abcdefgh"
+        System.out.println(ps.intertwine("abc", "12345"));                  //→ "a1b2c345"
+        System.out.println(ps.intertwine("12345", "abc"));                  //→ "1a2b3c45"
+        System.out.println(ps.intertwine(null, "abcd"));                    //→ null
+        System.out.println(ps.intertwine("abcd", null));                    //→ null
+        System.out.println(ps.intertwine(null, null));                      //→ null
+        System.out.println();
+
+        System.out.println("\033[1mEXERCISE 10:\033[0m");
+        System.out.println(ps.isPalindrome("racecar"));                     //→ true
+        System.out.println(ps.isPalindrome("Madam"));                       //→ false
+        System.out.println(ps.isPalindrome(null));                          //→ false
+        System.out.println();
     }
     
     /*
@@ -295,16 +310,30 @@ public class ProblemSet5 {
         }
     }
     
-//     /*
-//      * Exercise 9.
-//      * 
-//      * Given two strings, return a new string built by intertwining each of the
-//      * characters of a and b.
-//      */
+    /*
+     * Exercise 9.
+     * 
+     * Given two strings, return a new string built by intertwining each of the
+     * characters of a and b.
+     */
     
-//     public String intertwine(String a, String b) {
-
-//     }
+    public String intertwine(String a, String b) {
+        if (a == null || b == null) {
+            return null;
+        } else {
+            String output = "";
+            int maxLength = (a.length() > b.length()) ? a.length() : b.length();
+            for (int i = 0; i < maxLength; i++) {
+                if (i < a.length()) {
+                    output += String.valueOf(a.charAt(i));
+                }
+                if (i < b.length()) {
+                    output += String.valueOf(b.charAt(i));
+                }
+            }
+            return output;
+        }
+    }
     
 //     /*
 //      * Exercise 10.
